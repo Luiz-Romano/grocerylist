@@ -1,0 +1,91 @@
+"""
+Faça uma lista de compras com listas.
+O usuário deve ter a possibilidade de inserir, apagar e listar valores da sua lista.
+Não permita que o programa quebre com erros de índices inexistentes na lista.
+"""
+
+import os
+from time import sleep
+
+products = []
+
+while True:
+    os.system('cls')
+    print('~' * 15, 'Grocery List'.upper(), '~' * 15)
+    print()
+    print()
+    user = input('\t  Select an option: \n\n\033[32m[A]dd\033[m | \033[31m[D]elete\033[m | \033[33m[L]ist\033[m | [E]xit: \n\n')
+
+    if len(user) > 1:
+        os.system('cls')
+        print()
+        print('\t      Invalid Option...\n\t*\033[31mMore than 1 letter detected\033[m*')
+        sleep(1)
+        os.system('cls')
+        continue
+
+    if len(user) < 1:
+        os.system('cls')
+        print()
+        print('\t  Invalid Option...\n\t*\033[31mNo letter detected\033[m*')
+        sleep(1)
+        os.system('cls')
+        continue
+
+    if user in 'Aa':
+        os.system('cls')
+        print()
+        print('Add an item... (e.g. Pasta, Beans, Rice, etc...)')
+        print()
+        item = input('Which Item would you like to include? ').capitalize()
+        if item in products:
+            print('\033[31m\t*Item already listed!*\033[m')
+            sleep(1)
+            continue
+        if len(item) < 1:
+            os.system('cls')
+            print()
+            print('\t     Try again...\n\t*\033[31mNo letter detected\033[m*')
+            sleep(1)
+            os.system('cls')
+            continue
+        products.append(item)
+        print()
+        print(f'Item: "\033[34m{item.capitalize()}\033[m" succesfuly added to the list.')
+        sleep(1)
+        os.system('cls')
+        sleep(.1)
+
+    if user in 'Dd':
+        os.system('cls')
+        for i, p in enumerate(products):
+            print(f'\033[36m{i}\033[m\t\t\033[35m{p}\033[m')
+        print()
+
+        item_delete = int(input('Which item to delete? '))
+        try:
+            del products[item_delete]
+        except:
+            print()
+            print('\033[31m\t*There is no item registered with this index*\033[m')
+        print()
+        sleep(2)
+
+    if user in 'Ll':
+        os.system('cls')
+        if len(products) >= 1:
+            print('\tList updated')
+            for i, p in enumerate(products):
+                print(f'\033[36m{i}\033[m\t\t\033[35m{p}\033[m')
+            sleep(3)
+        else:
+            print('\n\t*\033[31m List is empty \033[m*')
+            sleep(1.5)
+        print()
+
+    if user in 'Ee':
+        print()
+        print('\t\t\033[31mClosing list...\033[m')
+        print()
+        break
+
