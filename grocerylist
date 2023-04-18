@@ -1,7 +1,7 @@
 """
-Faça uma lista de compras com listas.
-O usuário deve ter a possibilidade de inserir, apagar e listar valores da sua lista.
-Não permita que o programa quebre com erros de índices inexistentes na lista.
+Make a shopping list with lists.
+The user must be able to insert, delete and list values from his list.
+Don't allow the program to break with errors for non-existent indexes in the list.
 """
 
 import os
