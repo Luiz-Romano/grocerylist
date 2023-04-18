@@ -62,9 +62,12 @@ while True:
             print(f'\033[36m{i}\033[m\t\t\033[35m{p}\033[m')
         print()
 
-        item_delete = int(input('Which item to delete? '))
+        item_delete = input('Which item to delete? ')
         try:
-            del products[item_delete]
+            del products[int(item_delete)]
+        except ValueError:
+            print()
+            print('\033[31m\t*Numbers only!*\033[m')
         except:
             print()
             print('\033[31m\t*There is no item registered with this index*\033[m')
