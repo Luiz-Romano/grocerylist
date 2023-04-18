@@ -32,6 +32,11 @@ while True:
         os.system('cls')
         continue
 
+    if user not in 'AaDdLlEe':
+        print()
+        print('\033[31m\t*Please select a valid option!*\033[m')
+        sleep(1.5)
+
     if user in 'Aa':
         os.system('cls')
         print()
